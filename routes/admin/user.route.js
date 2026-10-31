@@ -1,0 +1,25 @@
+//express
+const express = require("express");
+const route = express.Router();
+
+//checkAccessWithSecretKey
+const checkAccessWithSecretKey = require("../../checkAccess");
+
+//controller
+const UserController = require("../../controllers/admin/user.controller");
+
+//get users
+route.get("/retrieveUserList", checkAccessWithSecretKey(), UserController.retrieveUserList);
+route.get("/summary", checkAccessWithSecretKey(), UserController.userSummary);
+route.get("/presence", checkAccessWithSecretKey(), UserController.userPresence);
+
+//toggle user's block status
+route.patch("/modifyUserBlockStatus", checkAccessWithSecretKey(), UserController.modifyUserBlockStatus);
+
+//get user's profile
+route.get("/fetchUserProfile", checkAccessWithSecretKey(), UserController.fetchUserProfile);
+
+//admin can add or deduct coins from a user's wallet
+route.patch("/updateUserCoin", checkAccessWithSecretKey(), UserController.updateUserCoin);
+
+module.exports = route;

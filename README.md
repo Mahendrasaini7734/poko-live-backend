@@ -1,0 +1,1 @@
+Zigo Live – A next-generation social platform for live streaming, video calls, audio chat, real-time messaging, and virtual gifting.
